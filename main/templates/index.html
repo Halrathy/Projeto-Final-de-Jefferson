@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block conteudo %}
+
+<main navBT>
+    
+    <!-- adcionar for repetição post destaque-->
+    <section class="container">
+        <div class="row">
+            <h2>Em destaque</h2>
+            <div class="col">
+                <div class="card" style="width: 18rem; height: 30rem;">
+                    <img src="../static/assets/img/agroecologia.jpg" class="card-img-top" alt="#">
+                    <div class="card-body">
+                        <h3 class="fs-5">Agroecologia ou Colapso</h2>
+                      <p class="card-text">No dia 8 de abril, a Articulação Nacional de Agroecologia (ANA) publicou uma proposta para retomada do Programa Aquisição de Alimentos da Agricultura Familiar (PAA).</p>
+                      <p><a href="">LEIA MAIS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                      </svg></a></p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+              <div class="card" style="width: 18rem; height: 30rem;">
+                  <img src="../static/assets/img/agroecologia.jpg" class="card-img-top" alt="#">
+                  <div class="card-body">
+                      <h3 class="fs-5">Agroecologia ou Colapso</h2>
+                    <p class="card-text">No dia 8 de abril, a Articulação Nacional de Agroecologia (ANA) publicou uma proposta para retomada do Programa Aquisição de Alimentos da Agricultura Familiar (PAA).</p>
+                    <p><a href="">LEIA MAIS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                    </svg></a></p>
+                  </div>
+                </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 18rem; height: 30rem;">
+                <img src="../static/assets/img/agroecologia.jpg" class="card-img-top" alt="#">
+                <div class="card-body">
+                    <h3 class="fs-5">Agroecologia ou Colapso</h2>
+                  <p class="card-text">No dia 8 de abril, a Articulação Nacional de Agroecologia (ANA) publicou uma proposta para retomada do Programa Aquisição de Alimentos da Agricultura Familiar (PAA).</p>
+                  <p><a href="">LEIA MAIS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                  </svg></a></p>
+                </div>
+              </div>
+        </div>
+        </div>    
+        
+    </section>
+    <!-- adcionar for repetição post notícia-->
+
+   <section class="container">
+       <div class="row">
+           <h2>Notícias</h2>
+           {% for publicacao in publicacoes %}
+           <div class="col">
+               <div class="card" style="width: 18rem; height: 30rem;">
+                   <img src="/media/{{publicacao.imagem}}" class="card-img-top" alt="#">
+                   <div class="card-body">
+                    <p>{{publicacao.tempo_da_publicacao}}</p>
+                    <h3 class="fs-5">{{publicacao.titulo}}</h2>
+                     <p class="card-text">{{publicacao.descricao}}</p>
+                     <p><a href="">LEIA <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                       <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                     </svg></a></p>
+                   </div>
+                 </div>
+           </div>
+           {% endfor %}
+           <a href="#" class="btn but" style="text-align: center;">Veja mais notícias</a>
+       </div>    
+   </section>
+
+</main>
+
+{% endblock conteudo %}
