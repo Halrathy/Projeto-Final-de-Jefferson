@@ -70,6 +70,13 @@ a:hover{
     height: 20rem;
     width: 100rem;
 }
-.card{
+card{
     padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+.teste{
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 5px;
 }
