@@ -38,7 +38,7 @@ header, footer{
     margin-left: 25px;
 }
 h6{
-    color: #9a68cb;
+    color:white;
 }
 p{
     font-size: 15px;
@@ -62,4 +62,14 @@ a:hover{
 }
 .but:hover{
     border-color:  #46a414 ;
+}
+.dividir{
+    padding-top: 30px;   
+}
+.img-height{
+    height: 20rem;
+    width: 100rem;
+}
+.card{
+    padding-bottom: 50px;
 }
