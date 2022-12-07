@@ -32,7 +32,7 @@ def cadastro(request):
         user = User.objects.create_user(username=username, email=email, password=senha)
         user.save()
 
-        return HttpResponse('usuário cadastrado com sucesso')
+        return render(request, 'usuariocadastrado.html')
 
 
 def login(request):
@@ -57,3 +57,13 @@ def login(request):
 def plataforma(request):
 # Aqui será a pagina que somente o usuário autenticado terá acesso, ou seja, a página de cadastro de publicações será aqui.   
     return render(request, 'plataforma.html')
+
+
+@login_required(login_url="/login/")
+def perfil(request):
+    return render(request,'Perfil.html')
+
+
+
+def usuario_cadastrado(request):
+    return render(request, 'usuariocadastrado.html')

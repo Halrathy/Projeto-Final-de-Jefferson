@@ -7,8 +7,14 @@ class Autor(models.Model):
     Telefone = models.IntegerField()
     cep = models.IntegerField()
 
+    def __str__(self):
+        return self.nome
+
 class Categoria(models.Model):
     nome = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nome
    
 class Publicacao(models.Model):
     titulo = models.CharField(max_length=200)
@@ -19,6 +25,10 @@ class Publicacao(models.Model):
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     categoria = models.ManyToManyField(Categoria)
 
+    
+    def __str__(self):
+        return self.titulo
+
 class Usuario(models.Model):
     nome = models.CharField(max_length=100)
     email = models.EmailField()
@@ -28,9 +38,17 @@ class Usuario(models.Model):
 class Categoria_Produto(models.Model):
     nome = models.CharField(max_length=100)
 
+    
+    def __str__(self):
+        return self.nome
+
 class Produto(models.Model):
     nome = models.CharField(max_length=100)
     valor = models.DecimalField(max_digits=8,decimal_places=2)
     descricao = models.TextField()
     categoria = models.ForeignKey(Categoria_Produto, on_delete=models.CASCADE)
     imagem = models.ImageField(upload_to='produtos/', blank=True, null=True, max_length=250)
+
+    
+    def __str__(self):
+        return self.nome
