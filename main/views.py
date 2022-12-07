@@ -13,9 +13,9 @@ def index(request):
     context={'publicacoes' : lista}
     return render(request,"index.html", context)
 
-def detalhe (request):
+def detalhe (request,id):
     publicacao = Publicacao.objects.get(id=id)
-    context = {'publicacoes' : publicacao }
+    context = {'publicacao' : publicacao }
     return render(request,"detalhe.html", context)
 
 def cadastro(request):
