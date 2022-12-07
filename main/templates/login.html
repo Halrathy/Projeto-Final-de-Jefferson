@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block conteudo %}
+
+<main>
+    <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+        <input type="text" placeholder="Username" name="username">
+        <br>
+        <input type="password"  placeholder="Senha" name="senha">
+        <br>
+        <input type="submit"    value="Logar">
+        <br>
+
+    </form>
+
+
+
+
+
+</main>
+
+
+
+
+{% endblock conteudo %}

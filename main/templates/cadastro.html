@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block conteudo %}
+
+<main>
+    <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
+        <input type="text" placeholder="Username" name="username">
+        <br>
+        <input type="email" placeholder="Useremail" name="email">
+        <br>
+        <input type="password"  placeholder="Senha" name="senha">
+        <br>
+        <input type="submit"    value="Cadastrar">
+        <br>
+
+    </form>
+
+
+
+
+
+</main>
+
+
+
+
+{% endblock conteudo %}
