@@ -58,7 +58,7 @@ def plataforma(request):
 # Aqui será a pagina que somente o usuário autenticado terá acesso, ou seja, a página de cadastro de publicações será aqui.   
     return render(request, 'plataforma.html')
 
-
+# Todas as páginas que tiver @login_required, so vai ser possivel acessar ela quando o usuário estiver logado.
 @login_required(login_url="/login/")
 def perfil(request):
     return render(request,'Perfil.html')
