@@ -4,19 +4,33 @@
 {% block conteudo %}
 
 <main>
-    <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
-        <input type="text" placeholder="Username" name="username">
-        <br>
-        <input type="email" placeholder="Useremail" name="email">
-        <br>
-        <input type="password"  placeholder="Senha" name="senha">
-        <br>
-        <input type="submit"    value="Cadastrar">
-        <br>
+    
+    <div class="form">
+        <h2>CADASTRO</h2>
 
-    </form>
+        <div class="input">
+            <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
+                <div class="inputBox">
+                    <label for="">Nome de Usuário:</label>
+                    <input type="text" placeholder="Username" name="username">
+                </div>
 
+                <div class="inputBox">
+                    <label for="">Email:</label>
+                    <input type="email" placeholder="Email" name="email">
+                </div>
 
+                <div class="inputBox">
+                    <label for="">Senha:</label>
+                    <input type="password"  placeholder="Senha" name="senha">
+                </div>
+
+                <div class="inputBox">
+                    <input type="submit"    value="Cadastrar"> 
+                </div>
+            </form>
+        </div>     
+    </div>
 
 
 

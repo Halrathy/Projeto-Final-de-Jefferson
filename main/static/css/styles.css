@@ -80,3 +80,74 @@ card{
     bottom: 0px;
     margin-bottom: 5px;
 }
+.form{
+    position: relative;
+    background: #062108;
+    border: 1px solid #000;
+    width: 280px;
+    padding: 10px 40px 60px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 100px auto 50px;
+}
+.form::before{
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    background: linear-gradient(315deg, #46a414,
+    #0d410f);
+    z-index: -1;
+    transform: skew(2deg, 1deg);
+    border-radius: 10px;
+}
+.form h2{
+    color: #FFF;
+    font-weight: 10px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+.form .input{
+    margin-top: 40px;
+    text-align: left;
+}
+.form .input .inputBox{
+    margin-top: 5px;
+    width: 150px;
+}
+.form .input .inputBox label{
+    display: block;
+    color: #FFF;
+    margin-bottom: 5px;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+.form .input .inputBox input{
+    position: relative;
+    width: 130%;
+    height: 40px;
+    border: none;
+    outline: none;
+    padding: 5px 5px;
+    background: linear-gradient(315deg, #46a414,
+    #0d410f);
+    color: #FFF;
+    font-size: 15px;
+    border-radius: 10px;
+}
+.form .input  .inputBox input[type='submit']{
+    cursor: pointer;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+.form .input  .inputBox input[type='submit']:hover{
+    background: linear-gradient(315deg, #0d410f,
+    #46a414);
+}
+.form .input  .inputBox input[type='submit']:active{
+   color: rgba(255, 255, 255, 0.521); 
+   background: linear-gradient(315deg, #2fe91e71,
+   #276b138c);
+}

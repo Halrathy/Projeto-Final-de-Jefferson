@@ -4,23 +4,30 @@
 {% block conteudo %}
 
 <main>
-    <form action="{% url 'login' %}" method="POST">{% csrf_token %}
-        <input type="text" placeholder="Username" name="username">
-        <br>
-        <input type="password"  placeholder="Senha" name="senha">
-        <br>
-        <input type="submit"    value="Logar">
-        <br>
+    
+    <div class="form">
+        <h2>Login</h2>
 
-    </form>
+        <div class="input">
+            <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+                <div class="inputBox">
+                    <label for="">Nome de Usuário:</label>
+                    <input type="text" placeholder="Username" name="username">
+                </div>
 
+                <div class="inputBox">
+                    <label for="">Senha:</label>
+                    <input type="password"  placeholder="Senha" name="senha">
+                </div>
 
-
-
+                <div class="inputBox">
+                    <input type="submit"    value="Logar"> 
+                </div>
+            </form>
+        </div>     
+    </div>
 
 </main>
-
-
 
 
 {% endblock conteudo %}
