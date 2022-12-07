@@ -25,7 +25,8 @@ class Publicacao(models.Model):
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     categoria = models.ManyToManyField(Categoria)
 
-    
+    def __str__(self):
+        return self.id
     def __str__(self):
         return self.titulo
 

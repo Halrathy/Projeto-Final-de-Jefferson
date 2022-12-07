@@ -13,6 +13,11 @@ def index(request):
     context={'publicacoes' : lista}
     return render(request,"index.html", context)
 
+def detalhe (request):
+    publicacao = Publicacao.objects.get(id=id)
+    context = {'publicacoes' : publicacao }
+    return render(request,"detalhe.html", context)
+
 def cadastro(request):
 # Aqui o request está pegando os dados enviados pelo metodo POST.
     if request.method == "GET":
