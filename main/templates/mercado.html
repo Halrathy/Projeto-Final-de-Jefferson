@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block conteudo %}
+ 
+  </section>
+  <section class="container" style="width: 1200px; padding-bottom: 30px;">
+    <div class="row">
+        <h2 style="padding-top:20px ; padding-bottom:20px">Produtos em destaque</h2>
+        {% for produto in produtos %}
+        <div class="col row-cols-1 row-cols-md-3 g-4" style="padding-bottom: 15px;">
+            <div class="card h-100" style="width: 18rem; height: auto;">
+                <img src="/media/{{produto.imagem}}" class="card-img-top" alt="#">
+                <div class="card-body">
+                 <h3 class="fs-5">{{produto.nome}}</h2>
+                  <p class="card-text">{{produto.categoria}}</p>
+                  <p class="card-text"> <b> R$ {{produto.valor}} </b></p>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>    
+  </section>
+
+{% endblock conteudo %}

@@ -10,8 +10,14 @@ from .models import *
 
 def index(request):
     lista = Publicacao.objects.all()
-    context={'publicacoes' : lista}
+    context={'publicacoes' : lista,}
     return render(request,"index.html", context)
+
+# def index(request):
+#     lista2 = Produto.objects.all()
+#     context={'produto': lista2}
+#     return render(request,"index.html", context)
+
 
 def cadastro(request):
 # Aqui o request está pegando os dados enviados pelo metodo POST.
@@ -61,9 +67,20 @@ def plataforma(request):
 
 @login_required(login_url="/login/")
 def perfil(request):
-    return render(request,'Perfil.html')
+    return render(request,'Perfil.html' )
 
 
 
 def usuario_cadastrado(request):
     return render(request, 'usuariocadastrado.html')
+
+def mercado(request):
+    lista = Produto.objects.all()
+    context={'produtos' : lista}
+    return render(request, 'mercado.html', context)
+
+def produto(request):
+    lista = Categoria_Produto.objects.all()
+    context={'categoria_produtos' : lista}
+    return render(request, 'produto.html', context)
+
