@@ -10,9 +10,27 @@ from .models import *
 
 def index(request):
     lista = Publicacao.objects.all()
-    lista_produto = Produto.objects.all
-    context={'publicacoes' : lista, 'produtos' : lista_produto}
-    return render(request,"index.html", context)
+    lista_produto = Produto.objects.all()
+
+    busca = request.GET.get('search')
+    if busca:
+        lista = Publicacao.objects.filter(titulo__icontains = busca)
+        lista_produto = Produto.objects.filter(nome__icontains = busca)
+        context = {'buscas' : lista, 'busca_produto' : lista_produto}
+        return render(request, "busca.html", context)
+    else:
+        context={'publicacoes' : lista, 'produtos' : lista_produto}
+        return render(request,"index.html", context)
+
+
+
+    
+    if busca:
+        lista = Publicacao.objects.filter(titulo__icontains= busca)
+        context = {'buscas' : lista}
+        return render(request, "busca.html", context)
+    else:
+        return render(request, "index.html")
 
 def detalhe (request,id):
     publicacao = Publicacao.objects.get(id=id)
