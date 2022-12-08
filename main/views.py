@@ -10,7 +10,8 @@ from .models import *
 
 def index(request):
     lista = Publicacao.objects.all()
-    context={'publicacoes' : lista}
+    lista_produto = Produto.objects.all
+    context={'publicacoes' : lista, 'produtos' : lista_produto}
     return render(request,"index.html", context)
 
 def detalhe (request,id):
