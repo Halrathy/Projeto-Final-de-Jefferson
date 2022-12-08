@@ -18,6 +18,17 @@ def detalhe (request,id):
     context = {'publicacao' : publicacao }
     return render(request,"detalhe.html", context)
 
+
+def mercado(request):
+    lista = Produto.objects.all()
+    context ={'produtos' : lista}
+    return render(request, 'mercado.html', context)
+
+def produto(request):
+    lista = Categoria_Produto.objects.all()
+    context = {'categoria_produtos' : lista}
+    return render(request, 'produto.html')
+
 def cadastro(request):
 # Aqui o request está pegando os dados enviados pelo metodo POST.
     if request.method == "GET":
