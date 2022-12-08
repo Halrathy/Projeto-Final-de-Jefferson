@@ -13,11 +13,18 @@ def index(request):
     context={'publicacoes' : lista,}
     return render(request,"index.html", context)
 
+<<<<<<< HEAD
 # def index(request):
 #     lista2 = Produto.objects.all()
 #     context={'produto': lista2}
 #     return render(request,"index.html", context)
 
+=======
+def detalhe (request,id):
+    publicacao = Publicacao.objects.get(id=id)
+    context = {'publicacao' : publicacao }
+    return render(request,"detalhe.html", context)
+>>>>>>> e5e0148b5fec6b3feadb0fc3e514945f3093c53d
 
 def cadastro(request):
 # Aqui o request está pegando os dados enviados pelo metodo POST.
@@ -64,7 +71,7 @@ def plataforma(request):
 # Aqui será a pagina que somente o usuário autenticado terá acesso, ou seja, a página de cadastro de publicações será aqui.   
     return render(request, 'plataforma.html')
 
-
+# Todas as páginas que tiver @login_required, so vai ser possivel acessar ela quando o usuário estiver logado.
 @login_required(login_url="/login/")
 def perfil(request):
     return render(request,'Perfil.html' )

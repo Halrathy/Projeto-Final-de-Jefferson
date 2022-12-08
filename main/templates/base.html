@@ -20,8 +20,12 @@
                        <a  href="{% url 'index' %}"><img style="margin-right: 20px;" src="..\static\assets\img\greenlogo.png" width="150px" alt=""></a>
                    </li>
                </ul>
+<<<<<<< HEAD
                
                <ul style="margin-right: 50px;">
+=======
+               <ul>
+>>>>>>> e5e0148b5fec6b3feadb0fc3e514945f3093c53d
                    <nav class="navbar">
                      <div class="container-fluid order-center">
                        <form class="d-flex">
@@ -74,6 +78,7 @@
         <div class="container-fluid">
             <div class="collapse navbar-collapse dropdown" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+<<<<<<< HEAD
                     <li class="nav-item margin">
                         <a class="nav-link" href="{% url 'index' %}">Home</a>
                     </li>
@@ -93,6 +98,27 @@
                     <li>
                       <a class="nav-link margin" href="#">Sobre Nós</a>
                     </li> 
+=======
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url  'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item margin">
+                        <a class="nav-link" href="#">Categoria</a>
+                    </li>
+                    <li class="nav-item margin">
+                        <a class="nav-link" href="#">Loja</a>
+                    </li>
+                    <li>
+                        <a class="nav-link margin" href="">Noticias</a>
+                    </li>
+                    {% if user.is_authenticated %} 
+                    <li class="nav-item">
+                        <a class="nav-link margin" href="{% url 'plataforma' %}">Cadastro de Noticias</a>
+                    </li>
+                    {% else %}
+                        <a href=""></a>
+                    {% endif %}
+>>>>>>> e5e0148b5fec6b3feadb0fc3e514945f3093c53d
                 </ul>
                  
             </div>

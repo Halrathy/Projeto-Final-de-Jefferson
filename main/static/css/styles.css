@@ -154,3 +154,18 @@ card{
    background: linear-gradient(315deg, #2fe91e71,
    #276b138c);
 }
+
+.img-noticia{
+    height: 30rem;
+    width: 40rem;
+}
+
+
+.subtitulo{
+    font-size: 25px
+}
+
+.corpo-noticia{
+
+    font-size: 25px;
+}
