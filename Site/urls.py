@@ -28,11 +28,7 @@ urlpatterns = [
     path('logout', auth_views.LogoutView.as_view(), name='logout'),
     path('perfil',perfil, name='perfil'),
     path('usuariocadastrado',usuario_cadastrado,name='usuariocadastrado'),
-<<<<<<< HEAD
     path('mercado/', mercado, name="mercado"),
-    path('produto/', produto, name="produto")
-=======
+    path('produto/', produto, name="produto"),
     path('detalhe/<int:id>',detalhe, name='detalhe'),
->>>>>>> e5e0148b5fec6b3feadb0fc3e514945f3093c53d
-
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

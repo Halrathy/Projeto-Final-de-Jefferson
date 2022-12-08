@@ -10,21 +10,18 @@ from .models import *
 
 def index(request):
     lista = Publicacao.objects.all()
-    context={'publicacoes' : lista,}
+    context={'publicacao' : lista,}
     return render(request,"index.html", context)
 
-<<<<<<< HEAD
 # def index(request):
 #     lista2 = Produto.objects.all()
 #     context={'produto': lista2}
 #     return render(request,"index.html", context)
 
-=======
-def detalhe (request,id):
+def detalhe(request,id):
     publicacao = Publicacao.objects.get(id=id)
     context = {'publicacao' : publicacao }
     return render(request,"detalhe.html", context)
->>>>>>> e5e0148b5fec6b3feadb0fc3e514945f3093c53d
 
 def cadastro(request):
 # Aqui o request está pegando os dados enviados pelo metodo POST.
