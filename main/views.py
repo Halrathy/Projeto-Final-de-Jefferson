@@ -18,9 +18,9 @@ def index(request):
 #     context={'produto': lista2}
 #     return render(request,"index.html", context)
 
-def detalhe(request,id):
+def detalhe (request):
     publicacao = Publicacao.objects.get(id=id)
-    context = {'publicacao' : publicacao }
+    context = {'publicacoes' : publicacao }
     return render(request,"detalhe.html", context)
 
 
