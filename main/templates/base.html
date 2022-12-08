@@ -20,11 +20,12 @@
                        <a  href="{% url 'index' %}"><img style="margin-right: 20px;" src="..\static\assets\img\greenlogo.png" width="150px" alt=""></a>
                    </li>
                </ul>
+               <ul style="margin-right: 50px;">
                <ul>
                    <nav class="navbar">
                      <div class="container-fluid order-center">
                        <form class="d-flex">
-                         <input id="bordap" class="form-control me-2" type="search" placeholder="O que você está procurando?" aria-label="Search" style="border: #666565; width: 250px;">
+                         <input id="bordap" class="form-control me-2" type="search" placeholder="O que você está procurando?" aria-label="Search" style="border: #666565; width: 300px;">
                          <a href=""><i class="fas fa-search" style="color: white; margin-top: 25px;"></i></a>
                        </form>
                      </div>
@@ -32,8 +33,26 @@
                </ul>
 
                <ul class="navbar-nav order-last">
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                  </svg></a> 
+                  <ul class="dropdown-menu">
+                  {% if user.is_authenticated %}
+                      <li><p style="text-align: center;"> Olá, {{ request.user.username }}</p></li>
+                      <li><a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a></li>
+                      <li><a class="dropdown-item" href="{% url 'logout'%}">Sair</a></li>
+                  {% else %}
+                    <!-- <p>Você não está logado</p> -->
+                    <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                    <li><a class="dropdown-item" href="{% url 'cadastro'%}">Cadastro</a></li>
+                  {% endif %}
+                </ul>
+                  <!-- <p>Minha Conta</p> -->
+              </li>
                   <li class="nav-item espç">
-                      <a class="nav-link" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
+                      <a class="nav-link" href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
                           <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4z"/>
                           <path d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1H4.268z"/>
                         </svg></a>
@@ -44,24 +63,6 @@
                      </svg></a>
                      <!-- <p>Meu Carrinho</p> -->
                  </li>
-                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                  </svg></a> 
-                  <ul class="dropdown-menu">
-                  {% if user.is_authenticated %}
-                      <li><a class="dropdown-item" href="#">Olá, {{ request.user.username }}</a></li>
-                      <li><a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a></li>
-                      <li><a class="dropdown-item" href="{% url 'logout'%}">Log Out</a></li>
-                  {% else %}
-                    <p>Você não está logado</p>
-                    <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
-                    <li><a class="dropdown-item" href="{% url 'cadastro'%}">Cadastro</a></li>
-                  {% endif %}
-                  </ul>
-                  <!-- <p>Minha Conta</p> -->
-              </li>
                </ul>
            </div>
        </div>
@@ -71,36 +72,35 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bordanav">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse dropdown" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url  'index' %}">Home</a>
+                    <li class="nav-item margin">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
                     </li>
                     <li class="nav-item margin">
-                        <a class="nav-link" href="#">Categoria</a>
+                        <a class="nav-link" href="">Notícias</a>
                     </li>
                     <li class="nav-item margin">
-                        <a class="nav-link" href="#">Loja</a>
+                        <a class="nav-link" href="{% url 'mercado' %}">Loja</a>
+                    </li>
+                    <li class="nav-item margin dropdown">
+                      <a class="nav-link" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cadastrar</a> 
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'mercado' %}">Notícia</a></li>
+                          <li><a class="dropdown-item" href="{% url 'produto' %}">Produto</a></li>
+                      </ul>
                     </li>
                     <li>
-                        <a class="nav-link margin" href="">Noticias</a>
-                    </li>
-                    {% if user.is_authenticated %} 
-                    <li class="nav-item">
-                        <a class="nav-link margin" href="{% url 'plataforma' %}">Cadastro de Noticias</a>
-                    </li>
-                    {% else %}
-                        <a href=""></a>
-                    {% endif %}
+                      <a class="nav-link margin" href="#">Sobre Nós</a>
+                    </li> 
                 </ul>
+                 
             </div>
+          
         </div>
         <hr>
     </nav>
-    </section>
+
 
 </header>
 <body>

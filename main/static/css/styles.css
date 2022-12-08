@@ -26,16 +26,19 @@ header, footer{
     margin-left: 50px;
     font-size: 15px;
 }
+.ajuste{
+    margin-bottom: 20px;
+}
 #bordap{
     border-radius: 50px;
     margin-top: 15px;
 }
 .bordanav{
     border: 0px;
-    padding:0px ;
+    padding:0px;
 }
 .margin{
-    margin-left: 25px;
+    margin-right: 25px;
 }
 h6{
     color:white;
