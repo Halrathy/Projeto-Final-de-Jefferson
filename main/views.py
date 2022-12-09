@@ -6,6 +6,7 @@ from django.contrib.auth import login as login_django
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import *
+from .forms import ProdutosForm
 # Create your views here.
 
 def index(request):
@@ -45,13 +46,18 @@ def mercado(request):
 
 def detalhe_produto(request, id):
     lista = Produto.objects.get(id=id)
-    context = {'produtos' : lista}
+    context = {'produto' : lista}
     return render(request, "detalhe_produto.html", context)
 
+
+@login_required
 def produto(request):
-    lista = Categoria_Produto.objects.all()
-    context = {'categoria_produtos' : lista}
-    return render(request, 'produto.html', context)
+    form = ProdutosForm(request.POST or None, request.FILES or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return render(request, 'produto.html', {'form': form})
+    return render(request, 'produto.html', {'form': form})
 
 def cadastro(request):
 # Aqui o request está pegando os dados enviados pelo metodo POST.
