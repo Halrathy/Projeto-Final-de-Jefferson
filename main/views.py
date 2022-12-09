@@ -43,10 +43,15 @@ def mercado(request):
     context ={'produtos' : lista}
     return render(request, 'mercado.html', context)
 
+def detalhe_produto(request, id):
+    lista = Produto.objects.get(id=id)
+    context = {'produtos' : lista}
+    return render(request, "detalhe_produto.html", context)
+
 def produto(request):
     lista = Categoria_Produto.objects.all()
     context = {'categoria_produtos' : lista}
-    return render(request, 'produto.html')
+    return render(request, 'produto.html', context)
 
 def cadastro(request):
 # Aqui o request está pegando os dados enviados pelo metodo POST.
@@ -98,7 +103,7 @@ def plataforma(request):
 def perfil(request):
     return render(request,'Perfil.html')
 
-
-
+def sobrenos(request):
+    return render(request, 'sobrenos.html')
 def usuario_cadastrado(request):
     return render(request, 'usuariocadastrado.html')
