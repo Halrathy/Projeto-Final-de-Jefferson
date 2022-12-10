@@ -23,16 +23,6 @@ def index(request):
         context={'publicacoes' : lista, 'produtos' : lista_produto}
         return render(request,"index.html", context)
 
-
-
-    
-    if busca:
-        lista = Publicacao.objects.filter(titulo__icontains= busca)
-        context = {'buscas' : lista}
-        return render(request, "busca.html", context)
-    else:
-        return render(request, "index.html")
-
 def detalhe (request,id):
     publicacao = Publicacao.objects.get(id=id)
     context = {'publicacao' : publicacao }
