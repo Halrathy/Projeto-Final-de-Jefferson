@@ -6,7 +6,7 @@ from django.contrib.auth import login as login_django
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import *
-from .forms import ProdutosForm
+from .forms import ProdutosForm, PublicacaoForm
 # Create your views here.
 
 def index(request):
@@ -90,9 +90,15 @@ def login(request):
             return HttpResponse("Usuário ou senha invalidos")
 
 @login_required(login_url="/login/")
+
 def plataforma(request):
-# Aqui será a pagina que somente o usuário autenticado terá acesso, ou seja, a página de cadastro de publicações será aqui.   
-    return render(request, 'plataforma.html')
+    form = PublicacaoForm(request.POST or None, request.FILES or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return render(request, 'plataforma.html', {'form_p': form})
+            
+    return render(request, 'plataforma.html',  {'form_p': form})
 
 # Todas as páginas que tiver @login_required, so vai ser possivel acessar ela quando o usuário estiver logado.
 @login_required(login_url="/login/")
