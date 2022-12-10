@@ -52,7 +52,6 @@ h6{
     color:white;
 }
 p{
-    font-size: 15px;
     text-align: justify;
     font-family:'Times New Roman', Times, serif; 
 }
@@ -180,8 +179,14 @@ card{
 .subtitulo{
     font-size: 25px
 }
-.corpo-noticia{
+.corpo-noticia p{
     font-size: 25px;
+}
+.corpo-noticia h2, .corpo-noticia h1{
+    font-weight: bold;
+}
+.corpo-noticia *{
+    font-family:'Times New Roman', Times, serif;
 }
 /* .cards-wrapper{
     display: flex;

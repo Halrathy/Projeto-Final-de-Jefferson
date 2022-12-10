@@ -1,4 +1,6 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class Autor(models.Model):
@@ -19,7 +21,7 @@ class Categoria(models.Model):
 class Publicacao(models.Model):
     titulo = models.CharField(max_length=200)
     descricao = models.TextField()
-    corpo_do_texto = models.TextField()
+    corpo_do_texto = RichTextUploadingField()
     tempo_da_publicacao = models.DateField()
     imagem = models.ImageField(upload_to='produtos/', blank=True, null=True, max_length=250)
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)

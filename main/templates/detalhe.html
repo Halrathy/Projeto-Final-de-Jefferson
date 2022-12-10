@@ -19,11 +19,15 @@
    <img class="img-noticia" src="/media/{{publicacao.imagem}}" >
    <!-- <p>Microrganismos presentes na folha da laranja poderão ser utilizados para degradar inseticidas — Foto: Fundecitrus/Divulgação</p> <br> -->
 
-   <p class="corpo-noticia">{{publicacao.corpo_do_texto}} </p>
-   </section>
-
+   <div class="corpo-noticia">{{publicacao.corpo_do_texto|safe}}</div>
    
-
+   </section>
+   <script>
+    var cn = window.document.getElementsByClassName('corpo-noticia')
+    cn.innerText = 'teste'
+   </script>
+<style>
+</style>
 
 </main>
 
