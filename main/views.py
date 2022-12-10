@@ -28,6 +28,10 @@ def detalhe (request,id):
     context = {'publicacao' : publicacao }
     return render(request,"detalhe.html", context)
 
+def noticias (request):
+    lista = Publicacao.objects.all()
+    context ={'publicacoes' : lista}
+    return render(request, 'noticia.html', context)
 
 def mercado(request):
     lista = Produto.objects.all()
@@ -101,6 +105,7 @@ def plataforma(request):
     return render(request, 'plataforma.html',  {'form_p': form})
 
 # Todas as páginas que tiver @login_required, so vai ser possivel acessar ela quando o usuário estiver logado.
+
 @login_required(login_url="/login/")
 def perfil(request):
     return render(request,'Perfil.html')
