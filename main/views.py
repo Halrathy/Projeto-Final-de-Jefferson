@@ -91,7 +91,7 @@ def login(request):
             login_django(request, user)
             return render(request, 'index.html')
         else:
-            return HttpResponse("Usuário ou senha invalidos")
+            return HttpResponse("Usuário ou senha invalidos","<script>alert('Teste')<script/>")
 
 @login_required(login_url="/login/")
 

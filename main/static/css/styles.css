@@ -52,8 +52,7 @@ h6{
     color:white;
 }
 p{
-    text-align: justify;
-    font-family:'Times New Roman', Times, serif; 
+    text-align: justify; 
 }
 a{
     text-decoration: none;
@@ -186,7 +185,7 @@ card{
     font-weight: bold;
 }
 .corpo-noticia *{
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Quicksand', sans-serif;
 }
 /* .cards-wrapper{
     display: flex;
