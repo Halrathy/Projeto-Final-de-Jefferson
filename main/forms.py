@@ -1,4 +1,10 @@
 from django import forms
+import django.forms.utils
+import django.forms.widgets
+from ckeditor.fields import RichTextFormField
+from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.fields import RichTextUploadingFormField
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from .models import *
 
 class ProdutosForm(forms.ModelForm):
@@ -13,6 +19,9 @@ class ProdutosForm(forms.ModelForm):
             'imagem': forms.FileInput(attrs={'class':'form-control', 'id':'formFileSm'}),
         }
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
 class PublicacaoForm(forms.ModelForm):
     class Meta:
         model = Publicacao
@@ -20,10 +29,9 @@ class PublicacaoForm(forms.ModelForm):
         widgets = {
             'titulo': forms.TextInput(attrs={'placeholder':'Adicione um título', 'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'placeholder':'Descrição da publicação', 'class': 'form-control','style':'height:100px'}),
-            'corpo_do_texto': forms.Textarea(attrs={'placeholder':'', 'class': 'form-control','style':'height:100px'}),
-            'tempo_da_publicacao': forms.TextInput(attrs={'placeholder':'Data da Publicação', 'class': 'form-control'}),
-            'autor': forms.Textarea(attrs={'placeholder':'Autor', 'class': 'form-control','style':'height:100px'}),
+            'corpo_do_texto': forms.Textarea(),
+            'tempo_da_publicacao': forms.SelectDateWidget(attrs={'class':'form-control','style':'width:100px;display:inline'}),
+            'autor': forms.Select(attrs={'class':'form-select'}),
             'imagem': forms.FileInput(attrs={'class':'form-control', 'id':'formFileSm'}),
             'categoria': forms.Select(attrs={'class':'form-select'}),
-            
         }

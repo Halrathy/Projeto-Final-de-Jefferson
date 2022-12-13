@@ -1,19 +1,29 @@
-{% extends 'base.html' %}
+{% extends 'base_cadastro.html' %}
 {% load static %}
 
 {% block conteudo %}
 
 <section class="container col-lg-8">
-
+    
+    <a  href="{% url 'index' %}"><img style="display: block; margin-left: auto; margin-right: auto; margin-top: 10px; width: 250px;" src="..\static\assets\img\logo_cadastro.png" width="150px" alt=""></a>
+  
+    <div class="form_cadastro">
     <h1 style="padding-top:20px;">Cadastrar Publicação</h1>
+    
+    <div  class="input">
+    <form method="POST" enctype="multipart/form-data" id="form_p">    
 
-    <form method="POST" enctype="multipart/form-data" id="form_p">
         {% csrf_token %}
+        {{ form_p.media }}
         {{ form_p.as_p }}
-        <button type="submit" class="but btn btn-primary" style="font-size: 20px; margin-bottom: 10px;"> Adicionar </button>
-    </form>
-</section>
 
+        <div class="inputBox">
+            <input type="submit"    value="Cadastrar"> 
+        </div> 
+    </form>
+  </div> 
+ </div> <br>
+</section>
 
 {% endblock conteudo %}
 
