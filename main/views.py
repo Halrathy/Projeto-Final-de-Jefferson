@@ -24,24 +24,52 @@ def index(request):
         return render(request,"index.html", context)
 
 def detalhe (request,id):
-    publicacao = Publicacao.objects.get(id=id)
-    context = {'publicacao' : publicacao }
-    return render(request,"detalhe.html", context)
+    busca = request.GET.get('search')
+    if busca:
+        lista = Publicacao.objects.filter(titulo__icontains = busca)
+        lista_produto = Produto.objects.filter(nome__icontains = busca)
+        context = {'buscas' : lista, 'busca_produto' : lista_produto}
+        return render(request, "busca.html", context)
+    else:
+        publicacao = Publicacao.objects.get(id=id)
+        context = {'publicacao' : publicacao }
+        return render(request,"detalhe.html", context)
 
 def noticias (request):
-    lista = Publicacao.objects.all()
-    context ={'publicacoes' : lista}
-    return render(request, 'noticia.html', context)
+    busca = request.GET.get('search')
+    if busca:
+        lista = Publicacao.objects.filter(titulo__icontains = busca)
+        lista_produto = Produto.objects.filter(nome__icontains = busca)
+        context = {'buscas' : lista, 'busca_produto' : lista_produto}
+        return render(request, "busca.html", context)
+    else:
+        lista = Publicacao.objects.all()
+        context ={'publicacoes' : lista}
+        return render(request, 'noticia.html', context)
 
 def mercado(request):
-    lista = Produto.objects.all()
-    context ={'produtos' : lista}
-    return render(request, 'mercado.html', context)
+    busca = request.GET.get('search')
+    if busca:
+        lista = Publicacao.objects.filter(titulo__icontains = busca)
+        lista_produto = Produto.objects.filter(nome__icontains = busca)
+        context = {'buscas' : lista, 'busca_produto' : lista_produto}
+        return render(request, "busca.html", context)
+    else:
+        lista = Produto.objects.all()
+        context ={'produtos' : lista}
+        return render(request, 'mercado.html', context)
 
 def detalhe_produto(request, id):
-    lista = Produto.objects.get(id=id)
-    context = {'produto' : lista}
-    return render(request, "detalhe_produto.html", context)
+    busca = request.GET.get('search')
+    if busca:
+        lista = Publicacao.objects.filter(titulo__icontains = busca)
+        lista_produto = Produto.objects.filter(nome__icontains = busca)
+        context = {'buscas' : lista, 'busca_produto' : lista_produto}
+        return render(request, "busca.html", context)
+    else:
+        lista = Produto.objects.get(id=id)
+        context = {'produto' : lista}
+        return render(request, "detalhe_produto.html", context)
 
 
 @login_required
@@ -94,7 +122,6 @@ def login(request):
             return HttpResponse("Usuário ou senha invalidos","<script>alert('Teste')<script/>")
 
 @login_required(login_url="/login/")
-
 def plataforma(request):
     form = PublicacaoForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
