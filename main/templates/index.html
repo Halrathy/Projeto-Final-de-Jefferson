@@ -68,13 +68,14 @@
         {% for produto in produtos %}
         <div class="col row-cols-1 row-cols-md-3 g-4" style="padding-bottom: 15px;">
             <div class="card h-100 sombra" style="width: 15rem; height: auto;">
-                <!-- <img src="/media/{{produto.imagem}}" class="card-img-top" alt="#"> -->
-                <a href="{% url 'detalhe_produto' produto.id %}"><img src="/media/{{produto.imagem}}" class="card-img-top" alt="#"></a>
+                <a href="{% url 'detalhe_produto' produto.id %}"><img src="/media/{{produto.imagem}}" class="card-img-top" style="margin-bottom: 25px;" alt="#"></a>
                 <div class="card-body">
+                <div class="teste">
                 <h3 class="fs-5"><b>{{produto.nome}} </b> </h2>
                   <p class="card-text">{{produto.categoria}}</p>
                   <p class="card-text"> <b> R$ {{produto.valor}} </b></p>
                 </div>
+              </div>
               </div>
         </div>
         {% endfor %}
