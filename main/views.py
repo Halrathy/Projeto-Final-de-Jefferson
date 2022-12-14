@@ -77,7 +77,10 @@ def produto(request):
     form = ProdutosForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
         if form.is_valid():
-            form.save()
+            task_list = form.save(commit=False)
+            task_list.user = request.user
+            task_list.save()
+            form = ProdutosForm
             return render(request, 'produto.html', {'form': form})
     return render(request, 'produto.html', {'form': form})
 
@@ -126,7 +129,10 @@ def plataforma(request):
     form = PublicacaoForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
         if form.is_valid():
-            form.save()
+            task_list = form.save(commit=False)
+            task_list.user = request.user
+            task_list.save()
+            form = PublicacaoForm
             return render(request, 'plataforma.html', {'form_p': form})
             
     return render(request, 'plataforma.html',  {'form_p': form})

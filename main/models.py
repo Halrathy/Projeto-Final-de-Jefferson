@@ -27,7 +27,7 @@ class Publicacao(models.Model):
     imagem = models.ImageField(upload_to='produtos/', blank=True, null=True, max_length=250)
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     categoria = models.ManyToManyField(Categoria)
-    user = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), null=True,blank=True,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.id
@@ -52,8 +52,8 @@ class Produto(models.Model):
     valor = models.DecimalField(max_digits=8,decimal_places=2)
     descricao = models.TextField()
     categoria = models.ForeignKey(Categoria_Produto, on_delete=models.CASCADE)
-    imagem = models.ImageField(upload_to='produtos/', blank=True, null=True, max_length=250)
+    imagem = models.ImageField(upload_to='produtos/', blank=True, null=True)
+    user = models.ForeignKey(get_user_model(), null=True,blank=True,on_delete=models.CASCADE)
 
-    
     def __str__(self):
         return self.nome

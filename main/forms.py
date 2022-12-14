@@ -33,5 +33,5 @@ class PublicacaoForm(forms.ModelForm):
             'tempo_da_publicacao': forms.SelectDateWidget(attrs={'class':'form-control','style':'width:100px;display:inline'}),
             'autor': forms.Select(attrs={'class':'form-select'}),
             'imagem': forms.FileInput(attrs={'class':'form-control', 'id':'formFileSm'}),
-            'categoria': forms.Select(attrs={'class':'form-select'}),
+            'categoria': forms.SelectMultiple(attrs={'class':'form-select'}),
         }
