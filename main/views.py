@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from django.shortcuts import render
+from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_django
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.contrib import messages
 from .models import *
 from .forms import ProdutosForm, PublicacaoForm
 # Create your views here.
@@ -122,7 +124,8 @@ def login(request):
             login_django(request, user)
             return render(request, 'index.html')
         else:
-            return HttpResponse("Usuário ou senha invalidos","<script>alert('Teste')<script/>")
+            messages.info(request, 'Usuário ou Senha inválidos')
+            return redirect('login')
 
 @login_required(login_url="/login/")
 def plataforma(request):

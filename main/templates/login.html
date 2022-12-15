@@ -19,7 +19,16 @@
                     <label for="">Senha:</label>
                     <input type="password"  placeholder="Senha" name="senha">
                 </div>
-
+                <p>
+                    
+                </p>
+                {% if messages %}
+                    {% for m in messages %}
+                        <div class="alert alert-warning" role="alert">
+                    {{ m }}
+                    </div>
+                    {% endfor %}
+                {% endif %}
                 <div class="inputBox">
                     <input type="submit"    value="Logar"> 
                 </div>
