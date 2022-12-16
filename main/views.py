@@ -6,6 +6,7 @@ from django.contrib.auth import login as login_django
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.http import cookie
 from django.contrib import messages
 from .models import *
 from .forms import ProdutosForm, PublicacaoForm
@@ -100,12 +101,13 @@ def cadastro(request):
         user = User.objects.filter(username=username).first()
 
         if user:
-            return HttpResponse('ja existe um usuário com esse username')
+            messages.info(request, 'Já existe um usuário com esse nome')
+            return redirect('cadastro')
 # Aqui está sendo feita o cadastrado dos informações.            
         user = User.objects.create_user(username=username, email=email, password=senha)
         user.save()
 
-        return render(request, 'usuariocadastrado.html')
+        return render(request, 'index')
 
 
 def login(request):
@@ -126,6 +128,23 @@ def login(request):
         else:
             messages.info(request, 'Usuário ou Senha inválidos')
             return redirect('login')
+
+def resetar_senha(request):
+    if request.method == 'POST':
+        return render(request, 'resetar_senha.html')
+    else:
+        username = request.POST.get('username')
+        novasenha = request.POST.get('novasenha')
+        try:
+            user = User.objects.get(username=username)
+            user.set_password(novasenha)
+            user.save()
+            messages.success(request, 'Senha modificada com sucesso')
+            return render('index')
+        except User.DoesNotExist:
+            messages.error(request, 'Usuário não encontrado')
+            return redirect('resetar_senha')
+
 
 @login_required(login_url="/login/")
 def plataforma(request):

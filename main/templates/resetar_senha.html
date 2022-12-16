@@ -6,23 +6,18 @@
 <main>
     
     <div class="form">
-        <h2>CADASTRO</h2>
+        <h2>Login</h2>
 
         <div class="input">
-            <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
+            <form action="{% url 'resetar_senha' %}" method="POST">{% csrf_token %}
                 <div class="inputBox">
                     <label for="">Nome de Usuário:</label>
                     <input type="text" placeholder="Username" name="username">
                 </div>
 
                 <div class="inputBox">
-                    <label for="">Email:</label>
-                    <input type="email" placeholder="Email" name="email">
-                </div>
-
-                <div class="inputBox">
                     <label for="">Senha:</label>
-                    <input type="password"  placeholder="Senha" name="senha">
+                    <input type="password"  placeholder="Senha" name="novasenha">
                 </div>
                 <p>
                     
@@ -34,19 +29,14 @@
                     </div>
                     {% endfor %}
                 {% endif %}
-
                 <div class="inputBox">
-                    <input type="submit"    value="Cadastrar"> 
+                    <input type="submit"    value="Resetar Senha"> 
                 </div>
             </form>
         </div>     
     </div>
 
-
-
 </main>
-
-
 
 
 {% endblock conteudo %}

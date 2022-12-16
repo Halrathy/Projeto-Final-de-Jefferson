@@ -133,4 +133,4 @@ CKEDITOR_UPLOAD_PATH = '/media/uploads/'
 
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
-LOGIN_URL = 'login'
+LOGIN_URL = 'index'
