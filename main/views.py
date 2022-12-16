@@ -107,7 +107,7 @@ def cadastro(request):
         user = User.objects.create_user(username=username, email=email, password=senha)
         user.save()
 
-        return render(request, 'index')
+        return render(request, 'index.html')
 
 
 def login(request):
@@ -129,20 +129,20 @@ def login(request):
             messages.info(request, 'Usuário ou Senha inválidos')
             return redirect('login')
 
-def resetarsenha(request):
-    if request.method == 'POST':
-        return render(request, 'resetarsenha.html')
-    else:
-        username = request.POST.get('username')
-        novasenha = request.POST.get('novasenha')
-        try:
-            user = User.objects.get(username=username)
-            user.set_password(novasenha)
-            user.save()
-            messages.success(request, 'Senha modificada com sucesso')
-            return render(request,'index')
-        except User.DoesNotExist:
-            return render(request,'resetarsenha.html')
+# def resetarsenha(request):
+#     if request.method == 'POST':
+#         return render(request, 'resetarsenha.html')
+#     else:
+#         username = request.POST.get('username')
+#         novasenha = request.POST.get('novasenha')
+#         try:
+#             user = User.objects.get(username=username)
+#             user.set_password(request.POST['novasenha'])
+#             user.save()
+#             messages.success(request, 'Senha modificada com sucesso')
+#             return render(request,'index')
+#         except User.DoesNotExist:
+#             return render(request,'resetarsenha.html')
 
 @login_required(login_url="/login/")
 def plataforma(request):

@@ -4,6 +4,7 @@ from main.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from django.urls import reverse_lazy
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",index, name='index'),
@@ -20,5 +21,10 @@ urlpatterns = [
     path('sobrenos/', sobrenos, name="sobrenos"),
     path('detalhe_produto/<int:id>', detalhe_produto, name="detalhe_produto"),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('resetarsenha/', resetarsenha, name="resetarsenha")
+    # path('resetarsenha/', resetarsenha, name="resetarsenha")
+    path('alterar-minha-senha/', auth_views.PasswordChangeView.as_view(
+        template_name='login.html',
+        extra_context={'titulo': 'Alterar senha atual'},
+        success_url=reverse_lazy('index')
+        ), name="alterar-senha"),
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

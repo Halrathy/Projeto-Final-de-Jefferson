@@ -132,5 +132,5 @@ MEDIA_URL = '/media/'
 CKEDITOR_UPLOAD_PATH = '/media/uploads/'
 
 LOGIN_REDIRECT_URL = 'index'
-LOGOUT_REDIRECT_URL = 'index'
-LOGIN_URL = 'index'
+LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'login'
