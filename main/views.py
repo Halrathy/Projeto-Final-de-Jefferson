@@ -107,7 +107,7 @@ def cadastro(request):
         user = User.objects.create_user(username=username, email=email, password=senha)
         user.save()
 
-        return render(request, 'index.html')
+        return redirect('index')
 
 
 def login(request):
@@ -124,25 +124,25 @@ def login(request):
         if user:
 # Aqui está sendo feita a verificação, para saber se o usuário estava cadastrado no banco.
             login_django(request, user)
-            return render(request, 'index.html')
+            return redirect('index')
         else:
             messages.info(request, 'Usuário ou Senha inválidos')
             return redirect('login')
 
-# def resetarsenha(request):
-#     if request.method == 'POST':
-#         return render(request, 'resetarsenha.html')
-#     else:
-#         username = request.POST.get('username')
-#         novasenha = request.POST.get('novasenha')
-#         try:
-#             user = User.objects.get(username=username)
-#             user.set_password(request.POST['novasenha'])
-#             user.save()
-#             messages.success(request, 'Senha modificada com sucesso')
-#             return render(request,'index')
-#         except User.DoesNotExist:
-#             return render(request,'resetarsenha.html')
+def resetarsenha(request):
+    if request.method == "GET":
+        return render(request, 'resetarsenha.html')
+    else:
+        username = request.POST.get('username')
+        novasenha = request.POST.get('novasenha')
+        try:
+            user = User.objects.get(username=username)
+            user.set_password(request.POST['novasenha'])
+            user.save()
+            messages.success(request, 'Senha modificada com sucesso')
+            return redirect('login')
+        except User.DoesNotExist:
+            return render(request,'resetarsenha.html')
 
 @login_required(login_url="/login/")
 def plataforma(request):

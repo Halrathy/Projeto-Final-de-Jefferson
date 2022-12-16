@@ -21,10 +21,5 @@ urlpatterns = [
     path('sobrenos/', sobrenos, name="sobrenos"),
     path('detalhe_produto/<int:id>', detalhe_produto, name="detalhe_produto"),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    # path('resetarsenha/', resetarsenha, name="resetarsenha")
-    path('alterar-minha-senha/', auth_views.PasswordChangeView.as_view(
-        template_name='login.html',
-        extra_context={'titulo': 'Alterar senha atual'},
-        success_url=reverse_lazy('index')
-        ), name="alterar-senha"),
+    path('resetarsenha/', resetarsenha, name="resetarsenha")
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
