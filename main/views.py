@@ -129,9 +129,9 @@ def login(request):
             messages.info(request, 'Usuário ou Senha inválidos')
             return redirect('login')
 
-def resetar_senha(request):
+def resetarsenha(request):
     if request.method == 'POST':
-        return render(request, 'resetar_senha.html')
+        return render(request, 'resetarsenha.html')
     else:
         username = request.POST.get('username')
         novasenha = request.POST.get('novasenha')
@@ -140,11 +140,9 @@ def resetar_senha(request):
             user.set_password(novasenha)
             user.save()
             messages.success(request, 'Senha modificada com sucesso')
-            return render('index')
+            return render(request,'index')
         except User.DoesNotExist:
-            messages.error(request, 'Usuário não encontrado')
-            return redirect('resetar_senha')
-
+            return render(request,'resetarsenha.html')
 
 @login_required(login_url="/login/")
 def plataforma(request):
