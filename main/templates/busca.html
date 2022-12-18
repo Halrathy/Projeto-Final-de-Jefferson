@@ -2,9 +2,10 @@
 {% load static %}
 
 {% block conteudo %}
-
+<section class="container" style="width: 1200px; padding-bottom: 30px;">
+  <div class="row">
 {% for publicacao in buscas %}
-<div class="col row-cols-1 row-cols-md-3 g-4" style="padding-bottom: 15px;">
+<div class="col row-cols-1 row-cols-md-3 g-4" style="padding-bottom: 15px; padding-top: 30px;">
   <div class="card h-100 sombra" style="width: 18rem; height: auto;">
       <img src="/media/{{publicacao.imagem}}" class="card-img-top" alt="#">
       <div class="card-body">
@@ -22,8 +23,12 @@
 </div>
 
 {% endfor %}
+</div>
+</section>
+<section class="container" style="width: 1200px; padding-bottom: 30px;">
+  <div class="row">
 {% for produto in busca_produto %}
-<div class="col row-cols-1 row-cols-md-3 g-4" style="padding-bottom: 15px;">
+<div class="col row-cols-1 row-cols-md-3 g-4" style="padding-bottom: 15px; padding-top: 30px;">
   <div class="card h-100 sombra" style="width: 15rem; height: auto;">
       <a href="{% url 'detalhe_produto' produto.id %}"><img src="/media/{{produto.imagem}}" class="card-img-top" alt="#"></a>
       <div class="card-body">
@@ -36,5 +41,7 @@
 </div>
 
 {% endfor %}
+</div>
+</section>
 
 {% endblock conteudo %}

@@ -33,10 +33,12 @@
             <button class="btn btn-outline-success" type="button" id="button-addon1">CEP</button>
             <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
           </div>
-          <p style="display: inline;">Quantidade:</p>
-          <select name="quantidade" autocomplete="off" tabindex="0" data-action="a-dropdown-select">
-            <option value="1" selected="">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option>
-          </select>
+          <div style="text-align: center;">
+            <p style="text-align: center;">Quantidade:</p>
+            <button type="button" id="decrement-button">-</button>
+            <input type="text" id="quantity" value="1" readonly>
+            <button type="button" id="increment-button">+</button>
+          </div>
           <br>
 
           <button type="button" class="but" style="font-size: 20px; margin-bottom: 10px; margin-top: 10px; text-align: center;"> Comprar </button>
@@ -46,4 +48,20 @@
     </div>
 
 </main>
+<script>
+  const incrementButton = document.getElementById('increment-button');
+  const decrementButton = document.getElementById('decrement-button');
+  const quantityInput = document.getElementById('quantity');
+  
+  incrementButton.addEventListener('click', () => {
+    quantityInput.value = parseInt(quantityInput.value, 10) + 1;
+  });
+  
+  decrementButton.addEventListener('click', () => {
+    let currentQuantity = parseInt(quantityInput.value, 10);
+    if (currentQuantity > 0) {
+      quantityInput.value = currentQuantity - 1;
+    }
+  });
+  </script>
 {% endblock %}

@@ -306,3 +306,23 @@ card{
     background-color: rgb(255, 255, 255);
     margin: 30px 30px;
 }
+
+#increment-button, #decrement-button {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    background-color: #eee;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  #quantity {
+    width: 40px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #fff;
+    border: none;
+    outline: none;
+  }
