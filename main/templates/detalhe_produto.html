@@ -31,7 +31,7 @@
           <h2 class="h3" style="color: black; text-align: center; margin-top: 50px;" class="card-text">R${{produto.valor}}</h2>
           <div class="input-group mb-3" style="margin-top: 25px;">
             <button class="btn btn-outline-success" type="button" id="button-addon1">CEP</button>
-            <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <input type="text" class="form-control" id="cep" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
           </div>
           <div style="text-align: center;">
             <p style="text-align: center;">Quantidade:</p>
@@ -63,5 +63,6 @@
       quantityInput.value = currentQuantity - 1;
     }
   });
+  $("#cep").mask("99999-999");
   </script>
 {% endblock %}
