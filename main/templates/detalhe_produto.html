@@ -4,7 +4,7 @@
 {% block conteudo %}
 <main>
 
-    <div class="des container" style="margin-bottom: 35px;">
+    <div class="des container" style="margin: 50px;">
       <div class="row cartao"  style="margin: 0px;">
         <div class="col-lg-7 detalhe container sombra">
           <div class="row">
@@ -35,13 +35,14 @@
           </div>
           <div style="text-align: center;">
             <p style="text-align: center;">Quantidade:</p>
-            <button type="button" id="decrement-button">-</button>
+            <button class="btn btn-outline-success" type="button" id="decrement-button">-</button>
             <input type="text" id="quantity" value="1" readonly>
-            <button type="button" id="increment-button">+</button>
+            <button class="btn-outline-success" type="button" id="increment-button">+</button>
           </div>
           <br>
-
-          <button type="button" class="but" style="font-size: 20px; margin-bottom: 10px; margin-top: 10px; text-align: center;"> Comprar </button>
+            <div class="order-center" style="text-align: center;">
+              <button type="button" class="but order-center" style="margin-right: 100px; font-size: 20px; margin: 20px; text-align: center;"> Comprar </button>
+            </div>
         </div>
 
       </div>
