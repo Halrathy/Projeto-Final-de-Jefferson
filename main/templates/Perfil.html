@@ -1,7 +1,61 @@
-{% extends 'base.html' %}
+{% extends 'base_cadastro.html' %}
 {% load static %}
+
 
 {% block conteudo %}
 
+<section class="container col-lg-8">
+    
+    <a  href="{% url 'index' %}"><img style="display: block; margin-left: auto; margin-right: auto; margin-top: 10px; width: 250px;" src="..\static\assets\img\logo_cadastro.png" width="150px" alt=""></a>
+    <div class="form_cadastro d-grid gap-4 d-md-flex col-8 mx-auto justify-content-md-center" >
+    <img src="..\static\assets\img\perfil2.png" alt="" style="height: 190px; width: 190px; margin-top:80px ; ">
+    <div  style="margin-top:80px ;">
+    <h1 style="padding-top:20px;">Olá, Usuário</h1>
+    <p style="padding-top:5px;">Seja Bem vindo de volta!</p>
+    </div>
+    <div class="inputBox">
+    <div></div>
+    
+    </div></div>
+    <br> <br>
+    <div class="d-grid gap-4 d-md-flex col-8 mx-auto justify-content-md-center" >
+        <a href="{% url 'plataforma' %}"><button class="btn btn-primary" type="button" style="font-size: 30px;">Cadastrar Publicação</button></a>
+        <a href="{% url 'produto' %}"><button class="btn btn-primary" type="button" style="font-size: 30px;">Cadastrar Produto</button></a>
+  </div>
+    <h1 style="padding-top:20px;">Suas Postagens</h1>
+    <div class="card mb-4" style="max-width: 540px; ">
+        <div class="row g-0 " style="margin: 10px; align-self: center;">
+          <div class="col-md-4">
+            <img src="/media/{{publicacao.imagem}}" class="img-fluid rounded-start" alt="..." style="margin-top: 10px; margin-right: 20px;"  >
+          </div>
+          <div class="col-sm-6">
+            <div class="card-body">
+              <h5 class="card-title">{{publicacao.titulo}}</h5> <br></div>
+          </div>
+          <p class="card-text" >{{publicacao.descricao}}</p>
+              <p class="card-text"><small class="text-muted">{{publicacao.tempo_da_publicacao}}</small></p>
+        </div> 
+    </div>  
+    <div class="row">
+        <h1 style="padding-top:20px;">Produtos cadastrados por você</h1>
+        {% for produto in produtos %}
+        <div class="col row-cols-1 row-cols-md-3 g-4" style="padding-bottom: 15px;">
+            <div class="card h-100 sombra" style="width: 15rem; height: auto;">
+                <a href="{% url 'detalhe_produto' produto.id %}"><img src="/media/{{produto.imagem}}" class="card-img-top" style="margin-bottom: 65px;" alt="#"></a>
+                <div class="card-body">
+                  <div class="teste">
+                 <h3 class="fs-5"><b>{{produto.nome}}</b></h3>
+                  <p class="card-text">{{produto.categoria}}</p>
+                  <p class="card-text"> <b> R$ {{produto.valor}} </b></p>
+                  <button type="button" class="but" style="font-size: 10px; margin-bottom: 5px;"> Comprar </button>
+                 </div>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>    
+
+ <br>
+</section>
 
 {% endblock conteudo %}
