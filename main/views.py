@@ -157,11 +157,14 @@ def plataforma(request):
             
     return render(request, 'plataforma.html',  {'form_p': form})
 
-# Todas as páginas que tiver @login_required, so vai ser possivel acessar ela quando o usuário estiver logado.
+# Todas as páginas que tiver @login_requireds, so vai ser possivel acessar ela quando o usuário estiver logado.
 
 @login_required(login_url="/login/")
 def perfil(request):
-    return render(request,'Perfil.html')
+    lista = Publicacao.objects.filter(user=request.user)
+    lista_produto = Produto.objects.filter(user=request.user)
+    context = {'publicacoes' : lista, 'produtos' : lista_produto}
+    return render(request,'Perfil.html', context)
 
 def sobrenos(request):
     return render(request, 'sobrenos.html')

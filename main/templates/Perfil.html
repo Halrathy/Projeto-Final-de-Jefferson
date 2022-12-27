@@ -5,13 +5,14 @@
 {% block conteudo %}
 
 <section class="container col-lg-8">
-    
+  
     <a  href="{% url 'index' %}"><img style="display: block; margin-left: auto; margin-right: auto; margin-top: 10px; width: 250px;" src="..\static\assets\img\logo_cadastro.png" width="150px" alt=""></a>
     <div class="form_cadastro d-grid gap-4 d-md-flex col-8 mx-auto justify-content-md-center" >
-    <img src="..\static\assets\img\perfil2.png" alt="" style="height: 190px; width: 190px; margin-top:80px ; ">
+    <img src="..\static\assets\img\icone-utilisateur-vert.png" alt="" style="height: 190px; width: 190px; margin-top:80px ; ">
     <div  style="margin-top:80px ;">
-    <h1 style="padding-top:20px;">Olá, Usuário</h1>
+    <h1 style="padding-top:20px;">Olá, {{ request.user}}</h1>
     <p style="padding-top:5px;">Seja Bem vindo de volta!</p>
+    <a type="button" class="btn btn-outline-success" href="{% url 'logout'%}">logout</a>
     </div>
     <div class="inputBox">
     <div></div>
@@ -23,6 +24,7 @@
         <a href="{% url 'produto' %}"><button class="btn btn-primary" type="button" style="font-size: 30px;">Cadastrar Produto</button></a>
   </div>
     <h1 style="padding-top:20px;">Suas Postagens</h1>
+    {% for publicacao in publicacoes %}
     <div class="card mb-4" style="max-width: 540px; ">
         <div class="row g-0 " style="margin: 10px; align-self: center;">
           <div class="col-md-4">
@@ -34,7 +36,8 @@
           </div>
           <p class="card-text" >{{publicacao.descricao}}</p>
               <p class="card-text"><small class="text-muted">{{publicacao.tempo_da_publicacao}}</small></p>
-        </div> 
+        </div>
+    {% endfor %}     
     </div>  
     <div class="row">
         <h1 style="padding-top:20px;">Produtos cadastrados por você</h1>
