@@ -25,8 +25,8 @@
     </div>
     <br> <br>
     <div class="d-grid gap-4 d-md-flex col-8 mx-auto justify-content-md-center" >
-      <a href="{% url 'plataforma' %}"><button class="btn btn-primary" type="button" style="font-size: 30px;">Cadastrar Publicação</button></a>
-      <a href="{% url 'produto' %}"><button class="btn btn-primary" type="button" style="font-size: 30px;">Cadastrar Produto</button></a>
+      <a href="{% url 'plataforma' %}"><button class="btn btn-primary btn-criar" type="button" style="font-size: 30px;">Cadastrar Publicação</button></a>
+      <a href="{% url 'produto' %}"><button class="btn btn-primary btn-criar" type="button" style="font-size: 30px;">Cadastrar Produto</button></a>
     </div>
     <section class="container" style="width: 1000px; padding-bottom: 30px;">
       <div class="row">
@@ -80,5 +80,21 @@
   </section>
  <br>
 </section>
+
+<style>
+  .btn-criar{
+    background-color: #2aa52e;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    background: linear-gradient(315deg, #46a414,
+    #0d410f);
+  }
+  .btn-criar:hover{
+    background-color: #0d410f;
+    background: linear-gradient(315deg, #0d410f, #46a414
+    );
+  }
+</style>
 
 {% endblock conteudo %}
