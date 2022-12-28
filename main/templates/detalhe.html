@@ -14,14 +14,13 @@
    <p class=" subtitulo "> {{publicacao.descricao}}</p><br>
 
    <h5>{{publicacao.autor}}</h5>
-   <h5>{{publicacao.user}}</h5> 
    <p> {{publicacao.tempo_da_publicacao}} </p>
 
-   <img class="img-noticia" src="/media/{{publicacao.imagem}}" >
+   <img style="margin-bottom: 20px;" class="img-noticia" src="/media/{{publicacao.imagem}}" >
    <!-- <p>Microrganismos presentes na folha da laranja poderão ser utilizados para degradar inseticidas — Foto: Fundecitrus/Divulgação</p> <br> -->
 
    <div class="corpo-noticia">{{publicacao.corpo_do_texto|safe}}</div>
-   
+   <h5 style="text-align: end; margin-top: 20px; margin-bottom: 40px;">Publicado por: {{publicacao.user}}</h5> 
    </section>
    <script>
     var cn = window.document.getElementsByClassName('corpo-noticia')
