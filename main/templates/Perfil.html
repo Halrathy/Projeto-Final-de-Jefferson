@@ -12,12 +12,20 @@
     <div  style="margin-top:80px ;">
     <h1 style="padding-top:20px;">Olá, {{ request.user}}</h1>
     <p style="padding-top:5px;">Seja Bem vindo de volta!</p>
-    <a type="button" class="btn btn-outline-success" href="{% url 'logout'%}">logout</a>
-    </div>
-    <div class="inputBox">
-    <div></div>
     
-    </div></div>
+    <div class="input" style="margin-top: 0px; margin-left: 50px ;"> 
+      <div class="inputBox" style="margin: 0px;">
+        <a href="{% url 'logout'%}">
+          <input type="submit" style="margin-top: 0px;" value="LOGOUT"> 
+        </a>
+      </div> 
+    </div>
+    
+    </div>
+
+
+
+    </div>
     <br> <br>
     <div class="d-grid gap-4 d-md-flex col-8 mx-auto justify-content-md-center" >
         <a href="{% url 'plataforma' %}"><button class="btn btn-primary" type="button" style="font-size: 30px;">Cadastrar Publicação</button></a>
