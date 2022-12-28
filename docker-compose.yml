@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - static_volume:/home/app
+  django:
+    build: ./
+    command: gunicorn Site.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/home/app
+    expose:
+      - 8000
+volumes:
+  static_volume:
+
