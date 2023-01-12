@@ -57,3 +57,8 @@ class Produto(models.Model):
 
     def __str__(self):
         return self.nome
+
+# class Pedido(models.Model):
+#     nome = models.CharField(max_length=100)
+#     valor = models.ManyToManyField(Produto)
+
