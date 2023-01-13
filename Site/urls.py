@@ -21,5 +21,8 @@ urlpatterns = [
     path('sobrenos/', sobrenos, name="sobrenos"),
     path('detalhe_produto/<int:id>', detalhe_produto, name="detalhe_produto"),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('resetarsenha/', resetarsenha, name="resetarsenha")
+    path('resetarsenha/', resetarsenha, name="resetarsenha"),
+    path('loja/<int:id>', loja, name="loja"),
+    path('carrinho/', Carrinho, name="carrinho"),
+    path('delete/<int:id>', delete, name="delete")
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_django
@@ -126,7 +127,7 @@ def login(request):
             login_django(request, user)
             return redirect('index')
         else:
-            messages.info(request, 'Usuário ou Senha inválidos')
+            messages.warning(request, 'Usuário ou Senha inválidos')
             return redirect('login')
 
 def resetarsenha(request):
@@ -166,25 +167,35 @@ def perfil(request):
     context = {'publicacoes' : lista, 'produtos' : lista_produto}
     return render(request,'Perfil.html', context)
 
-# @login_required(login_url="/login/")
-# def loja(request,id):
-#     # usuario = User.objects.get(username = request.user)
-#     try:
-#         produto = Produto.objects.get(pk = id)
-#         pedido_aux = Pedido.objects.get(nome_produto= produto.nome_produto)
+@login_required(login_url="/login/")
+def loja(request,id):
+    try:
+        produto = Produto.objects.get(pk = id)
+        pedido_aux = Pedido.objects.get(nome_produto= produto.nome, id_cliente = request.user.id)
 
-#         if pedido_aux:
-#             messages.info(request,'Erro! Já existe um usuário com o mesmo e-mail')
-#             return redirect('detalhes', produto.pk)
+        if pedido_aux:
+            messages.error(request,'Esse produto ja está no seu carrinho')
+            return redirect('detalhe_produto', produto.pk)
 
-#     except Pedido.DoesNotExist:
-#         produto = Produto.objects.get(pk = id)
-#         print(produto)
-#         new_pedido = Pedido( id_cliente = request.user.id, nome_produto = produto.nome, valor_produto = produto.valor, quantidade = request.POST['quantity'] )
-#         print(new_pedido)
-#         new_pedido.save()
-#         print(produto)
-#         return redirect('detalhes',produto.pk)
+    except Pedido.DoesNotExist:
+        produto = Produto.objects.get(pk = id)
+        print(produto)
+        new_pedido = Pedido( id_cliente = request.user.id, nome_produto = produto.nome, valor_produto = produto.valor, quantidade = 5)
+        print(new_pedido)
+        new_pedido.save()
+        print(produto)
+        return redirect('detalhe_produto',produto.pk)
+
+@login_required
+def Carrinho(request):
+    pedidos = Pedido.objects.filter(id_cliente = request.user.id )
+    return render(request, 'carrinho.html', {'pedidos':pedidos})
+
+@login_required(login_url="/login/")
+def delete(request, id):
+    pedido = get_object_or_404(Pedido, pk = id)
+    pedido.delete()
+    return redirect('carrinho')
 
 
 def sobrenos(request):

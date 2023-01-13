@@ -58,7 +58,11 @@ class Produto(models.Model):
     def __str__(self):
         return self.nome
 
-# class Pedido(models.Model):
-#     nome = models.CharField(max_length=100)
-#     valor = models.ManyToManyField(Produto)
+class Pedido(models.Model):
+    nome_produto = models.CharField(max_length=100)
+    valor_produto = models.DecimalField(max_digits=8,decimal_places=2)
+    quantidade = models.IntegerField()
+    id_cliente = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.nome_produto

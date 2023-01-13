@@ -36,12 +36,21 @@
           <div style="text-align: center;">
             <p style="text-align: center;">Quantidade:</p>
             <button class="btn btn-outline-success" type="button" id="decrement-button">-</button>
-            <input type="text" id="quantity" value="1" readonly>
+            <input method="POST"  type="text" id="quantity" value="1" readonly>
             <button class="btn-outline-success" type="button" id="increment-button">+</button>
           </div>
           <br>
             <div class="order-center" style="text-align: center;">
+              <a href="{% url 'loja' produto.id %}">
               <button type="button" class="but order-center" style="margin-right: 100px; font-size: 20px; margin: 20px; text-align: center;"> Comprar </button>
+              </a>
+              {% if messages %}
+                    {% for m in messages %}
+                        <div class="alert alert-warning" role="alert">
+                    {{ m }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
 

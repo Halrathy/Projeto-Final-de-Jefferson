@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block conteudo %}
+<main>
+<section class="dividir">   
+  </section>  
+  {% for pedido in pedidos %}
+  <div class="col row-cols-1 row-cols-md-3 g-4" style="padding-bottom: 15px;">
+      <div class="card h-100 sombra" style="width: 18rem; height: auto;">
+          <img src="/media/{{produto.imagem}}" class="card-img-top" alt="">
+          <div class="card-body">
+          <p>{{pedido.nome_produto}}</p>
+          <h3 class="fs-5">{{pedido.valor_produto}}</h2>
+            <p class="card-text"></p>
+            <p class="teste">
+            <a href="{% url 'delete' pedido.id %}" class="cor-fonte">deletar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+            </svg>
+          </a>
+        </p>
+          </div>
+        </div>
+  </div>
+  {% endfor %}
+  
+
+   <section>
+   
+   </section>
+</main>
+
+
+{% endblock conteudo %}
