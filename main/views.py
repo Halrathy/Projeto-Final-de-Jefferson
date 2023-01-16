@@ -164,14 +164,15 @@ def plataforma(request):
 def perfil(request):
     lista = Publicacao.objects.filter(user=request.user)
     lista_produto = Produto.objects.filter(user=request.user)
-    context = {'publicacoes' : lista, 'produtos' : lista_produto}
+    pedidos = Pedido.objects.filter(id_cliente=request.user)
+    context = {'publicacoes' : lista, 'produtos' : lista_produto, 'pedidos' : pedidos}
     return render(request,'Perfil.html', context)
 
 @login_required(login_url="/login/")
 def loja(request,id):
     try:
         produto = Produto.objects.get(pk = id)
-        pedido_aux = Pedido.objects.get(nome_produto= produto.nome, id_cliente = request.user.id)
+        pedido_aux = Pedido.objects.get(nome_produto= produto.nome, id_cliente = request.user)
 
         if pedido_aux:
             messages.error(request,'Esse produto ja está no seu carrinho')
@@ -180,7 +181,7 @@ def loja(request,id):
     except Pedido.DoesNotExist:
         produto = Produto.objects.get(pk = id)
         print(produto)
-        new_pedido = Pedido( id_cliente = request.user.id, nome_produto = produto.nome, valor_produto = produto.valor, quantidade = 5)
+        new_pedido = Pedido( id_cliente = request.user, nome_produto = produto.nome, valor_produto = produto.valor, imagem = produto.imagem, quantidade = 5)
         print(new_pedido)
         new_pedido.save()
         print(produto)
@@ -188,7 +189,7 @@ def loja(request,id):
 
 @login_required
 def Carrinho(request):
-    pedidos = Pedido.objects.filter(id_cliente = request.user.id )
+    pedidos = Pedido.objects.filter(id_cliente = request.user)
     return render(request, 'carrinho.html', {'pedidos':pedidos})
 
 @login_required(login_url="/login/")

@@ -62,6 +62,7 @@ class Pedido(models.Model):
     nome_produto = models.CharField(max_length=100)
     valor_produto = models.DecimalField(max_digits=8,decimal_places=2)
     quantidade = models.IntegerField()
+    imagem = models.ImageField(blank=True, null=True)
     id_cliente = models.CharField(max_length=100)
 
     def __str__(self):
