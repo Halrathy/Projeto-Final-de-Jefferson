@@ -2,10 +2,40 @@
 {% load static %}
 
 {% block conteudo %}
-<section class="dividir">   
-  {% for pedido in pedidos %}
-  <div class="card mb-3" style="max-width: 540px;">
+
+</section>
+<section class="container" style="width: 1200px; padding-bottom: 30px;">
+  <div class="row">
+      <h2 style="padding-top:40px ; padding-bottom:20px">Produtos disponíveis</h2>
+      {% for pedido in pedidos %}
+      <div class="col row-cols-1 row-cols-md-3 g-4" style="padding-bottom: 15px; width: auto; height: 200px;">
+          <div class="card h-100 sombra" style="width: 15rem; height: auto; flex-direction: row;">
+            <img src="{{pedido.imagem.url}}" class="img-fluid rounded-start" alt="#">
+              <div class="card-body" style="padding-left: 0px;">
+                <div class="teste">
+               <h3 class="fs-5"><b>{{pedido.nome_produto}}</b></h3>
+                <p class="card-text">{{pedido.quantidade}}</p>
+                <p class="card-text"> <b> R$ {{pedido.valor_produto}} </b></p>
+                <div class="input" style="margin-top: 0px; margin-left: 0px ;"> 
+                  <div class="inputBox" style="margin: 0px;">
+                    <a href="{% url 'delete' pedido.id %}">
+                      <input type="submit" style="margin-top: 0px;" value="Excluir produto"> 
+                    </a>
+                  </div> 
+                </div>
+               </div>
+              </div>
+            </div>
+      </div>
+      {% endfor %}
+  </div>    
+</section>
+
+<!-- <section class="dividir">   
+  
+  <div class="card mb-3" style="width: 400px; height: 155px;">
     <div class="row g-0">
+      {% for pedido in pedidos %}
       <div class="col-md-4">
         <img src="{{pedido.imagem.url}}" class="img-fluid rounded-start" alt="#">
       </div>
@@ -13,16 +43,20 @@
         <div class="card-body">
           <h5 class="card-title">{{pedido.nome_produto}}</h5>
           <p class="card-text">{{pedido.valor_produto}}</p>
-          <a href="{% url 'delete' pedido.id %}" class="cor-fonte"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-          </svg>
+          <div>
+            <a href="{% url 'delete' pedido.id %}" class="cor-fonte"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+            </svg>
+          </div>
         </div>
       </div>
+      {% endfor %} 
     </div>
+   
   </div>
-  {% endfor %} 
-</section>
+  
+</section> -->
 
 
 
