@@ -5,14 +5,18 @@ services:
     ports:
       - 80:80
     volumes:
-      - static_volume:/home/app
+      - static_volume:/home/app/main/static
+      - media_volume:/home/app/media
   django:
     build: ./
     command: gunicorn Site.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - static_volume:/home/app
+      - static_volume:/home/app/main/static
+      - static_volume:/home/app/media
+      - static_volume:/home/app/banco
     expose:
       - 8000
 volumes:
   static_volume:
-
+  media_volume:
+  db_volume:
