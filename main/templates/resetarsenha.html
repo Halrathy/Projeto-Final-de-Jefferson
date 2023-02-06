@@ -1,22 +1,23 @@
-{% extends 'base.html' %}
+{% extends 'base_cadastro.html' %}
 {% load static %}
 
 {% block conteudo %}
 
 <main>
-    
-    <div class="form">
+    <a  href="{% url 'index' %}"><img style="display: block; margin-left: auto; margin-right: auto; margin-top: 10px; width: 250px;" src="..\static\assets\img\logo_cadastro.png" alt=""></a>
+    <div class="form" style="margin-top: 0px;">
         <h2>Alterar Senha</h2>
 
         <div class="input">
             <form action="{% url 'resetarsenha' %}" method="POST">{% csrf_token %}
+                
                 <div class="inputBox">
-                    <label for="">Nome de Usuário:</label>
-                    <input type="text" placeholder="Username" name="username">
+                    <label for="">Senha:</label>
+                    <input type="password"  placeholder="Senha" name="novasenha">
                 </div>
 
                 <div class="inputBox">
-                    <label for="">Senha:</label>
+                    <label for="">Confirme sua senha:</label>
                     <input type="password"  placeholder="Senha" name="novasenha">
                 </div>
                 <div class="inputBox">

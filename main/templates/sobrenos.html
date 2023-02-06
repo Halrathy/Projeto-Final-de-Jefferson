@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_cadastro.html' %}
 {% load static %}
 
 
@@ -6,8 +6,11 @@
 
 
   <section class="container">
-   <h1 style="margin-top: 60px;">Sobre o GreenTech</h1>
-   <p style="margin: 20px 0px;">O GreenTech tem como proposta garantir a total satisfação de seus clientes através da comercialização de produtos, portal de notícias sempre atualizado e o compartilhamento de informações seguras.</p>
+    <a href="{% url 'index' %}"><svg xmlns="http://www.w3.org/2000/svg" width="35" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+    </svg></a>
+   <h1 style="margin-top: 50px;">Sobre o GreenTech</h1>
+   <p style="margin: 20px 0px; font-size: 25px;">O GreenTech tem como proposta garantir a total satisfação de seus clientes através da comercialização de produtos, portal de notícias sempre atualizado e o compartilhamento de informações seguras.</p>
 
    <div style="text-align: right;">
 
@@ -33,34 +36,25 @@
     <h2 style="margin: 30px 0px 30px 0px;">Conheça a equipe GreenTech</h2>
 
     <section class="container" >
-        <div class="row">
-            <div class="col cartao detalhe sombra" style="width: 20px;">
-                <img style="margin: 10px; align-items: center;" src="..\static\assets\img\perfilAJ.png" alt="" width="250px">
-                <p class="fs-4" style="text-align: center;">Ana Jamily</p>
+        <div class="row order-center">
+          
+            <div class="col-3 cartao detalhe sombra" style="width: 20px order-center; margin: 20px;">
+            <img  src="..\static\assets\img\perfilEG.png" alt="" width="300px">
+            <p class="fs-4" style="text-align: center;">Erika Giovanna</p>
             </div>
-            <div class="col cartao detalhe sombra order-center" style="width: 20px;">
-              <img style="margin: 10px; text-align: center; margin-top: 20px;" src="..\static\assets\img\logo_cadastro.png" alt="" width="250px">
-             
-          </div>
-            <div class="col cartao detalhe sombra" style="width: 20px;">
-                <img style="margin: 10px;" src="..\static\assets\img\perfilDR.png" alt="" width="250px">
-                <p class="fs-4" style="text-align: center;">Davi Rêgo</p>
+
+            <div class="col-4 cartao detalhe sombra order-center" style="width: 20px order-center; margin: 20px;">
+              <img style=" margin-left: 25px; text-align: center;" src="..\static\assets\img\logo_cadastro.png" alt="" width="300px">
+            </div>
+            <div class="col-3 cartao detalhe sombra" style="width: 20px order-center; margin: 20px;">
+            <img style=" margin-right: 10px; text-align: center;"  src="..\static\assets\img\perfilMC.png" alt="" width="300px">
+            <p class="fs-4" style="text-align: center;">Maria Clara</p>
             </div>
         </div>
-        <div class="row">
-          <div class="col cartao detalhe sombra" style="width: 20px;">
-            <img style="margin: 10px;" src="..\static\assets\img\perfilMG.png" alt="" width="250px">
-            <p class="fs-4" style="text-align: center;" >Marcos Gabriel</p>
-          </div>
-            <div class="col cartao detalhe sombra" style="width: 20px;">
-              <img style="margin: 10px;" src="..\static\assets\img\perfilMC.png" alt="" width="250px">
-              <p class="fs-4" style="text-align: center;">Maria Clara</p>
-          </div>
-          <div class="col cartao detalhe sombra" style="width: 20px;">
-            <img style="margin: 10px;" src="..\static\assets\img\perfilLG.png" alt="" width="250px">
-            <p class="fs-4" style="text-align: center;">Lucas Gabriel</p>
-        </div>
-        </div>
+        <hr>
+            
+         
+      
     </section>
 
   </section>

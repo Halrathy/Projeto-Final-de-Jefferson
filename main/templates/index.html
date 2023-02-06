@@ -56,7 +56,7 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Aceito receber emails frequentes</label>
           </div>
-          <a href="{% url 'index' %}"><button type="button" class="but" style="font-size: 10px; margin-bottom: 5px;"> Assinar </button> </a>
+          <button type="button"  class="but"  style="font-size: 10px; margin-bottom: 5px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop" > Assinar </button>
         </form>
       </div>
     </div>
@@ -83,6 +83,26 @@
   </section>
 
 </section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">OBAAA!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Obrigada por assinar, agora você terá acesso a versão personalizada do GreenTech! 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- <div id="carouselExampleInterval" class="container carousel slide" data-bs-ride="carousel">
   <div class="row carousel-inner">
     <div class="carousel-item active cards-wrapper" data-bs-interval="10000">

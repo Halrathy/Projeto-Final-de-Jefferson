@@ -19,6 +19,20 @@ class ProdutosForm(forms.ModelForm):
             'imagem': forms.FileInput(attrs={'class':'form-control', 'id':'formFileSm'}),
         }
 
+class DeliveryForm(forms.ModelForm):
+    class Meta:
+        model = Delivery
+        fields = ['nome_Completo','rua','bairro','numero', 'cidade', 'complemento', 'descricao']
+        widgets = {
+            'nome_Completo': forms.TextInput(attrs={'placeholder':'Nome Completo', 'class': 'form-control'}),
+            'rua': forms.TextInput(attrs={'placeholder':'Rua', 'class': 'form-control'}),
+            'bairro': forms.TextInput(attrs={'placeholder':'Bairro', 'class': 'form-control'}),
+            'numero': forms.TextInput(attrs={'placeholder':'Número', 'class': 'form-control'}),
+            'cidade': forms.TextInput(attrs={'placeholder':'Cidade', 'class': 'form-control'}),
+            'complemento': forms.TextInput(attrs={'placeholder':'complemento', 'class': 'form-control'}),
+            'descricao': forms.Textarea(attrs={'placeholder':'Descrição', 'class': 'form-control','style':'height:100px'}),
+        }
+
 class DateInput(forms.DateInput):
     input_type = 'date'
 

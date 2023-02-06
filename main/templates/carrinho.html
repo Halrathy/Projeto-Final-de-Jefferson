@@ -6,6 +6,44 @@
 </section>
 <section class="container" style="width: 1200px; padding-bottom: 30px;">
   <div class="row">
+      <h2 style="padding-top:20px ; padding-bottom:20px; margin-top: 50px;"><b> Seu Carrinho</b></h2>
+      {% for pedido in pedidos %}
+      <div class="col row-cols-1 row-cols-md-3 g-4" style="padding-bottom: 15px;">
+          <div class="card h-100 sombra " style="width: 15rem; height: auto;">
+              <a><img src="{{pedido.imagem.url}}" class="card-img-top" style="margin-bottom: 25px;" alt="#"></a>
+              <div class="card-body" style="padding-left: 20px;">
+              <div class="teste">
+              <h3 class="fs-5"><b>{{pedido.nome_produto}} </b> </h2>
+                <p class="card-text">{{pedido.categoria}}</p>
+                <p class="card-text"> <b> R$ {{pedido.valor_produto}}  </b></p>
+                
+              </div>
+              <div class="input" style="margin-top: 0px; margin-left: 180px ;"> 
+                  <div class="inputBox" style="margin: 0px;">
+                    <a href="{% url 'delete' pedido.id %}">
+                      <svg xmlns="http://www.w3.org/2000/svg"   style="align-self: flex-end;" width="25"  fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                      </svg>
+                    </a>
+                  </div> 
+                </div>
+            </div>
+            </div>
+      </div>
+      {% endfor %}
+  </div>    
+</section>
+<hr>
+<a href="{% url  'delivery' %}"><div style="margin: 50px;" class="d-grid gap-2 col-6 mx-auto">
+  <button class="but" type="button">Finalizar Pedido</button>
+</div></a>
+
+
+
+
+
+<!-- <section class="container" style="width: 1200px; padding-bottom: 30px;">
+  <div class="row">
       <h2 style="padding-top:40px ; padding-bottom:20px">Produtos disponíveis</h2>
       {% for pedido in pedidos %}
       <div class="col row-cols-1 row-cols-md-3 g-4" style="padding-bottom: 15px; width: auto; height: 200px;">
@@ -29,7 +67,7 @@
       </div>
       {% endfor %}
   </div>    
-</section>
+</section> -->
 
 <!-- <section class="dividir">   
   

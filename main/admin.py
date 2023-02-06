@@ -8,3 +8,4 @@ admin.site.register(Categoria)
 admin.site.register(Usuario)
 admin.site.register(Autor)
 admin.site.register(Publicacao)
+

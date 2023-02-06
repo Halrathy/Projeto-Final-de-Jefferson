@@ -17,6 +17,7 @@ urlpatterns = [
     path('detalhe/<int:id>',detalhe, name='detalhe'),
     path('mercado/', mercado, name="mercado"),
     path('produto/', produto, name="produto"),
+    path('delivery/', delivery, name="delivery"),
     path('noticias/', noticias, name="noticia"),
     path('sobrenos/', sobrenos, name="sobrenos"),
     path('detalhe_produto/<int:id>', detalhe_produto, name="detalhe_produto"),

@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 from django.http import cookie
 from django.contrib import messages
 from .models import *
-from .forms import ProdutosForm, PublicacaoForm
+from .forms import DeliveryForm, ProdutosForm, PublicacaoForm
 # Create your views here.
 
 def index(request):
@@ -74,7 +74,17 @@ def detalhe_produto(request, id):
         lista = Produto.objects.get(id=id)
         context = {'produto' : lista}
         return render(request, "detalhe_produto.html", context)
-
+    
+def delivery(request):
+    form = DeliveryForm(request.POST or None, request.FILES or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            task_list = form.save(commit=False)
+            task_list.user = request.user
+            task_list.save()
+            form = DeliveryForm
+            return render(request, 'delivery.html', {'form': form})
+    return render(request, 'delivery.html', {'form': form})
 
 @login_required
 def produto(request):

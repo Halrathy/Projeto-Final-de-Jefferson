@@ -47,6 +47,7 @@ class Categoria_Produto(models.Model):
     def __str__(self):
         return self.nome
 
+
 class Produto(models.Model):
     nome = models.CharField(max_length=100)
     valor = models.DecimalField(max_digits=8,decimal_places=2)
@@ -57,6 +58,21 @@ class Produto(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class Delivery(models.Model):
+    nome_Completo = models.CharField(max_length=180)
+    rua = models.CharField(max_length=180)
+    bairro = models.CharField(max_length=180)
+    numero = models.CharField(max_length=180)
+    cidade = models.CharField(max_length=180)
+    complemento = models.CharField(max_length=180)
+    descricao = models.TextField()
+    user = models.ForeignKey(get_user_model(), null=True,blank=True,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nome
+
+
 
 class Pedido(models.Model):
     nome_produto = models.CharField(max_length=100)

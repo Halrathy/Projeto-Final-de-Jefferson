@@ -1,0 +1,49 @@
+{% extends 'base_cadastro.html' %}
+{% load static %}
+
+{% block conteudo %}
+
+
+<section style="display: block;" class="container col-lg-8">
+    
+    <a  href="{% url 'index' %}"><img style="display: block; margin-left: auto; margin-right: auto;  width: 250px;" src="..\static\assets\img\logo_cadastro.png" width="150px" alt=""></a>
+  
+    <div class="form_cadastro">
+    <h1 style="padding-top:20px;">Finalizar Pedido</h1>
+    
+    <div class="input">
+    <form method="POST" enctype="multipart/form-data" id="form">    
+
+        {% csrf_token %}
+        {{ form_p.media }}
+        {{ form.as_p }}
+    
+        
+        </form>
+        <div data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button class="but">Enviar Pedido</button>   
+            </div> 
+  </div> 
+ </div> <br>
+ <br> <br>
+</section>
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">PARABÉNS!</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Seu pedido foi enviado com sucesso.
+            A previsão de entrega é de dois dias após o pedido.
+            Fique de olho no seu email, te manteremos atualizado sobre seus pedidos.
+            <hr>
+            O pagamento é realizado durante o ato de entrega!
+        </div>
+        
+      </div>
+    </div>
+  </div>
+{% endblock conteudo %}
